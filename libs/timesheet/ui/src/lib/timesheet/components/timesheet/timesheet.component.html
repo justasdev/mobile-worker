@@ -1,0 +1,123 @@
+<mat-card class="timesheet-widget">
+  <mat-card-header>
+    <section fxLayout="column" fxLayoutGap="10px" fxFill>
+      <header fxLayoutAlign="space-between">
+        <span class="large-text">
+          {{ selectedDay | date: 'MMMM y' }}
+        </span>
+        <mat-icon
+          class="calendar-icon cursor-pointer"
+          fontSet="material-icons-outlined"
+          [attr.data-day]="today | date: 'dd'"
+          (click)="goToCurrentDay()"
+        >
+          calendar_today
+        </mat-icon>
+      </header>
+      <mw-week
+        [days]="days"
+        [(selectedDay)]="selectedDay"
+        (selectedDayChange)="setSelectedDay()"
+      ></mw-week>
+    </section>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <perfect-scrollbar>
+      <div class="timesheet-details">
+        <header fxLayoutAlign="space-between">
+          <div fxLayoutGap="10px">
+            <time>{{ selectedDay | date: 'EEEE' }}</time>
+            <span>{{ selectedDay | date: 'dd.MM.y' }}</span>
+          </div>
+          <span
+            mat-ripple
+            class="large-text cursor-pointer uppercase theme-primary-text"
+            (click)="goToTimesheet.emit()"
+          >
+            Go to timesheet
+          </span>
+        </header>
+        <section
+          *ngIf="selectedDayInfo?.hoursDetails?.length"
+          class="details-section hours-details"
+        >
+          <header
+            class="details-header light-gray"
+            fxLayoutAlign="space-between center"
+          >
+            <div fxLayoutAlign="space-between center">
+              <mat-icon fontSet="material-icons">schedule</mat-icon>
+              <span>Hours</span>
+            </div>
+            <span class="gray-text">
+              ({{ selectedDayInfo.firstTaskStart | date: 'HH:mm' }} -
+              {{ selectedDayInfo.lastTaskEnd | date: 'HH:mm' }})
+            </span>
+          </header>
+          <app-gd-grid
+            [gridModel]="hoursDetails"
+            [headerClass]="headerClass"
+            [headerGap]="detailsGridHeaderGap"
+            [rowsGap]="detailsGridRowsGap"
+            [data]="selectedDayInfo.hoursDetails"
+          >
+          </app-gd-grid>
+        </section>
+        <section
+          *ngIf="selectedDayInfo?.expenseDetails?.length"
+          class="details-section"
+        >
+          <header
+            class="details-header light-gray"
+            fxLayoutAlign="flex-start center"
+          >
+            <mat-icon fontSet="material-icons">attach_money</mat-icon>
+            <span>Expenses</span>
+          </header>
+          <app-gd-grid
+            [gridModel]="expensesDetails"
+            [headerClass]="headerClass"
+            [headerGap]="detailsGridHeaderGap"
+            [rowsGap]="detailsGridRowsGap"
+            [data]="selectedDayInfo.expenseDetails"
+          >
+          </app-gd-grid>
+        </section>
+        <section
+          *ngIf="selectedDayInfo?.additionalHoursDetails?.length"
+          class="details-section hours-details"
+        >
+          <header
+            class="details-header light-gray"
+            fxLayoutAlign="flex-start center"
+          >
+            <mat-icon>add_alarm</mat-icon>
+            <span>Additional hours</span>
+          </header>
+          <app-gd-grid
+            [gridModel]="additionalHoursDetails"
+            [headerClass]="headerClass"
+            [headerGap]="detailsGridHeaderGap"
+            [rowsGap]="detailsGridRowsGap"
+            [data]="selectedDayInfo.additionalHoursDetails"
+          >
+          </app-gd-grid>
+        </section>
+      </div>
+    </perfect-scrollbar>
+  </mat-card-content>
+  <mat-card-footer class="light-gray">
+    <button
+      (click)="addTask.emit(selectedDay)"
+      mat-raised-button
+      color="primary"
+      class="add-task-btn uppercase"
+    >
+      Add task
+    </button>
+  </mat-card-footer>
+</mat-card>
+<ng-template #durationTpl let-cell>
+  {{ cell | mwDuration }}
+</ng-template>

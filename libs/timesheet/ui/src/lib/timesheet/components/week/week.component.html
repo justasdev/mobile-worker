@@ -1,0 +1,11 @@
+<div fxLayout="row" fxLayoutAlign="space-between">
+  <ng-container *ngFor="let day of week">
+    <mw-day
+      *ngIf="findDay(day) as d"
+      [day]="d"
+      [selected]="isSelected(day)"
+      (click)="dayClicked(day)"
+    >
+    </mw-day>
+  </ng-container>
+</div>

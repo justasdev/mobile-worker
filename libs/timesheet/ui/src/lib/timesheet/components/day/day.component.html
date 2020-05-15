@@ -1,0 +1,17 @@
+<div
+  class="mw-day"
+  fxLayout="column"
+  fxLayoutAlign="space-between center"
+  fxLayoutGap="4px"
+>
+  <!--  TODO: define wrapper for these pipes to decouple format -->
+  <span class="day-of-week">{{ day.date | date: 'EE' }}</span>
+  <span class="day-of-month">{{ day.date | date: 'dd' }}</span>
+  <ng-container *ngIf="showDayDetails; else noDetailsTpl">
+    <span>{{ day.workHours | mwDuration }}</span>
+    <span class="approval-state-dot {{ day.dayType }}"></span>
+  </ng-container>
+</div>
+<ng-template #noDetailsTpl>
+  <span>-</span>
+</ng-template>

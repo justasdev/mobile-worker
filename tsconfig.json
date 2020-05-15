@@ -7,6 +7,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
@@ -15,7 +16,30 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@mobile-worker/timesheet/shared/types": [
+        "libs/timesheet/shared/types/src/index.ts"
+      ],
+      "@mobile-worker/timesheet/data-access": [
+        "libs/timesheet/data-access/src/index.ts"
+      ],
+      "@mobile-worker/timesheet/shared/static-data": [
+        "libs/timesheet/shared/static-data/src/index.ts"
+      ],
+      "@mobile-worker/timesheet/shared/helpers": [
+        "libs/timesheet/shared/helpers/src/index.ts"
+      ],
+      "@mobile-worker/timesheet/ui": ["libs/timesheet/ui/src/index.ts"],
+      "@mobile-worker/timesheet/shared/pipes": [
+        "libs/timesheet/shared/pipes/src/index.ts"
+      ],
+      "@mobile-worker/shared/components": [
+        "libs/shared/components/src/index.ts"
+      ],
+      "@mobile-worker/timesheet/shared/services": [
+        "libs/timesheet/shared/services/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

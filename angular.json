@@ -10,7 +10,7 @@
       },
       "root": "apps/timesheet",
       "sourceRoot": "apps/timesheet/src",
-      "prefix": "mobile-worker",
+      "prefix": "mw",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -120,6 +120,223 @@
           "options": {
             "tsConfig": ["apps/timesheet-e2e/tsconfig.e2e.json"],
             "exclude": ["**/node_modules/**", "!apps/timesheet-e2e/**"]
+          }
+        }
+      }
+    },
+    "timesheet-shared-types": {
+      "root": "libs/timesheet/shared/types",
+      "sourceRoot": "libs/timesheet/shared/types/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/timesheet/shared/types/tsconfig.lib.json",
+              "libs/timesheet/shared/types/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/timesheet/shared/types/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/timesheet/shared/types/jest.config.js",
+            "tsConfig": "libs/timesheet/shared/types/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "timesheet-data-access": {
+      "root": "libs/timesheet/data-access",
+      "sourceRoot": "libs/timesheet/data-access/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/timesheet/data-access/tsconfig.lib.json",
+              "libs/timesheet/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/timesheet/data-access/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/timesheet/data-access/jest.config.js",
+            "tsConfig": "libs/timesheet/data-access/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "timesheet-shared-static-data": {
+      "root": "libs/timesheet/shared/static-data",
+      "sourceRoot": "libs/timesheet/shared/static-data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/timesheet/shared/static-data/tsconfig.lib.json",
+              "libs/timesheet/shared/static-data/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/timesheet/shared/static-data/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/timesheet/shared/static-data/jest.config.js",
+            "tsConfig": "libs/timesheet/shared/static-data/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "timesheet-shared-helpers": {
+      "root": "libs/timesheet/shared/helpers",
+      "sourceRoot": "libs/timesheet/shared/helpers/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/timesheet/shared/helpers/tsconfig.lib.json",
+              "libs/timesheet/shared/helpers/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/timesheet/shared/helpers/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/timesheet/shared/helpers/jest.config.js",
+            "tsConfig": "libs/timesheet/shared/helpers/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "timesheet-ui": {
+      "root": "libs/timesheet/ui",
+      "sourceRoot": "libs/timesheet/ui/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/timesheet/ui/tsconfig.lib.json",
+              "libs/timesheet/ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/timesheet/ui/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/timesheet/ui/jest.config.js",
+            "tsConfig": "libs/timesheet/ui/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "timesheet-shared-pipes": {
+      "root": "libs/timesheet/shared/pipes",
+      "sourceRoot": "libs/timesheet/shared/pipes/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/timesheet/shared/pipes/tsconfig.lib.json",
+              "libs/timesheet/shared/pipes/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/timesheet/shared/pipes/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/timesheet/shared/pipes/jest.config.js",
+            "tsConfig": "libs/timesheet/shared/pipes/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-components": {
+      "root": "libs/shared/components",
+      "sourceRoot": "libs/shared/components/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/components/tsconfig.lib.json",
+              "libs/shared/components/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/components/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/components/jest.config.js",
+            "tsConfig": "libs/shared/components/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "timesheet-shared-services": {
+      "root": "libs/timesheet/shared/services",
+      "sourceRoot": "libs/timesheet/shared/services/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/timesheet/shared/services/tsconfig.lib.json",
+              "libs/timesheet/shared/services/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/timesheet/shared/services/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/timesheet/shared/services/jest.config.js",
+            "tsConfig": "libs/timesheet/shared/services/tsconfig.spec.json",
+            "passWithNoTests": true
           }
         }
       }

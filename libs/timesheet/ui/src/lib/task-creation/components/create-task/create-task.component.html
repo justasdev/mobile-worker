@@ -1,0 +1,60 @@
+<header>
+  <!--  If we would need date of this format all over the project, would be better to implement pipe-->
+  <h2 mat-dialog-title>
+    {{ isUpdate ? 'Update' : 'Create' }} task:
+    {{ isUpdate ? data.mwEvent.id : (data.date | date: dateFormat) }}
+  </h2>
+</header>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-dialog-content fxLayout="column" fxLayoutGap="10px">
+    <mat-form-field>
+      <mat-label>Event</mat-label>
+      <input formControlName="eventTypeName" matInput />
+    </mat-form-field>
+    <mat-button-toggle-group
+      formControlName="eventType"
+      name="type"
+      fxLayout="row"
+    >
+      <mat-button-toggle
+        *ngFor="let eventType of eventTypes"
+        fxFlex
+        fxLayoutAlign="center center"
+        class="capitalized"
+        [value]="eventType.value"
+      >
+        {{ eventType.title }}
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <mat-checkbox formControlName="isWorkHour" color="primary">
+        Work Hours
+      </mat-checkbox>
+      <mat-form-field>
+        <mat-label>Quantity</mat-label>
+        <input formControlName="quantity" matInput type="number" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input formControlName="price" matInput type="number" />
+      </mat-form-field>
+    </div>
+    <!--    TODO: Implement layout with grid to prevent such hardcoded value-->
+    <div class="approval-checkboxes" fxLayout="row" fxLayoutGap="21px">
+      <mat-checkbox formControlName="isApproved" color="primary">
+        Approved
+      </mat-checkbox>
+      <mat-checkbox formControlName="isRejected" color="primary">
+        Rejected
+      </mat-checkbox>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-dialog-close mat-raised-button class="uppercase">
+      Close
+    </button>
+    <button mat-raised-button class="uppercase" color="primary" type="submit">
+      {{ isUpdate ? 'Update' : 'Create' }}
+    </button>
+  </mat-dialog-actions>
+</form>

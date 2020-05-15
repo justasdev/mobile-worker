@@ -1,0 +1,69 @@
+@import '~@angular/material/theming';
+
+$large-text: 16px;
+$medium-text: 14px;
+$normal-text: 12px;
+$font-family: mat-font-family(mat-typography-config());
+$content-height: 300px;
+$space-around-divider: 20px;
+
+mat-card {
+  width: 400px;
+}
+
+//mat-card sets absolute positioning on mat-divider, so can't set vertical margins on it
+mat-card-header {
+  padding-bottom: $space-around-divider;
+}
+
+mat-card-content {
+  padding-top: $space-around-divider;
+}
+
+perfect-scrollbar {
+  max-height: $content-height;
+  height: $content-height;
+}
+
+.large-text {
+  font-size: $large-text;
+  font-weight: 600;
+}
+
+.medium-text {
+  font-size: $medium-text;
+}
+
+.normal-text {
+  font-size: $normal-text;
+}
+
+.calendar-icon {
+  position: relative;
+  &::before {
+    position: absolute;
+    transform: translate(41%, 86%);
+    font-size: 11.5px;
+    content: attr(data-day);
+    font-family: $font-family;
+  }
+}
+
+.details-header {
+  margin: 15px 0 15px 0;
+  border-radius: 4px;
+  padding: 5px;
+  mat-icon {
+    margin-right: 5px;
+  }
+}
+
+.add-task-btn {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.details-section:last-child {
+  padding-bottom: 15px;
+}

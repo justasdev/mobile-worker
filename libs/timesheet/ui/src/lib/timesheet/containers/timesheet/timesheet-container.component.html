@@ -1,0 +1,8 @@
+<mw-timesheet
+  [days]="daysInfos$ | async"
+  (addTask)="openCreationForm($event)"
+  (goToTimesheet)="goToTimesheet()"
+>
+</mw-timesheet>
+
+<router-outlet></router-outlet>

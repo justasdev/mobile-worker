@@ -1,0 +1,7 @@
+<mw-events-table
+  [events]="mwEventsFacade.mwEvents$ | async"
+  (deleteMwEvent)="deleteMwEvent($event)"
+  (updateMwEvent)="updateMwEvent($event)"
+>
+</mw-events-table>
+<router-outlet></router-outlet>

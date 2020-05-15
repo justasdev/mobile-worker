@@ -1,0 +1,33 @@
+@import 'apps/timesheet/src/styles';
+@import '~@angular/material/theming';
+
+:host:not([disabled]) {
+  box-sizing: border-box;
+  cursor: pointer;
+  &:not(.selected):hover {
+    .day-of-month {
+      background-color: mat-color($timesheet-primary, A100);
+    }
+  }
+}
+
+:host(.weekend) {
+  opacity: 0.5;
+}
+
+:host(.selected) {
+  .day-of-month {
+    @extend .theme-primary;
+  }
+}
+
+:host {
+  min-width: 35px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.day-of-month {
+  border-radius: 4px;
+  padding: 8px;
+}

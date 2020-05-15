@@ -1,0 +1,31 @@
+<div gdColumns="{{ gdColumns }}" gdRows="{{ gridRows }}" gdGap="{{ gridGap }}">
+  <div
+    *ngFor="let model of gridModel"
+    [style]="{ paddingBottom: headerGap || rowsGap }"
+    class="gd-header-cell {{ model.headerClass || headerClass }}"
+  >
+    {{ model.header }}
+  </div>
+  <ng-container *ngFor="let row of data">
+    <ng-container *ngFor="let model of gridModel">
+      <div
+        *ngIf="!model.cellTemplate; else tplCell"
+        [style]="{ paddingBottom: rowsGap }"
+        class="gd-table-cell {{ model.cellClass }}"
+      >
+        {{ row[model.prop] }}
+      </div>
+      <ng-template #tplCell>
+        <div class="gd-table-cell {{ model.cellClass }}">
+          <ng-container
+            *ngTemplateOutlet="
+              model.cellTemplate;
+              context: { $implicit: row[model.prop] }
+            "
+          >
+          </ng-container>
+        </div>
+      </ng-template>
+    </ng-container>
+  </ng-container>
+</div>

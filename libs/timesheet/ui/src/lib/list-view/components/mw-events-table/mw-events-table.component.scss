@@ -1,0 +1,16 @@
+.mw-events-grid {
+  width: 885px;
+  height: 500px;
+}
+
+.approval-state-dot-wrapper {
+  text-align: center;
+  position: relative;
+  .approval-state-dot {
+    display: inline-block;
+  }
+}
+
+mat-icon {
+  vertical-align: text-bottom;
+}

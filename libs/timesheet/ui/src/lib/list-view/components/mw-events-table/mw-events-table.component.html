@@ -1,0 +1,33 @@
+<ag-grid-angular
+  class="ag-theme-alpine mw-events-grid"
+  [gridOptions]="gridOptions"
+>
+</ag-grid-angular>
+
+<ng-template #deleteCellTpl let-row>
+  <mat-icon class="cursor-pointer" (click)="deleteMwEvent.emit(row)">
+    delete_forever
+  </mat-icon>
+</ng-template>
+
+<ng-template #updateCellTpl let-row>
+  <mat-icon fxFlex="" class="cursor-pointer" (click)="updateMwEvent.emit(row)">
+    edit
+  </mat-icon>
+</ng-template>
+
+<ng-template #eventTypeTpl let-row>
+  <mat-icon [matTooltip]="getTooltip(row)">
+    {{ getEventTypeIcon(row) }}
+  </mat-icon>
+</ng-template>
+
+<ng-template #approvalTpl let-row>
+  <div class="approval-state-dot-wrapper">
+    <span
+      class="approval-state-dot {{ getApprovalState(row) }}"
+      [matTooltip]="getApprovalTooltip(row)"
+    >
+    </span>
+  </div>
+</ng-template>

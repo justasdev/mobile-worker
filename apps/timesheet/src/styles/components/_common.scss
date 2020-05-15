@@ -1,0 +1,19 @@
+@import '~@angular/material/theming';
+
+$state-type-to-color: (
+  neutral: mat-color($mat-grey, 500),
+  positive: mat-color($mat-green, 700),
+  negative: mat-color($mat-red, 900),
+);
+
+.approval-state-dot {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+
+  @each $key in map_keys($state-type-to-color) {
+    &.#{$key} {
+      background-color: map_get($state-type-to-color, $key);
+    }
+  }
+}

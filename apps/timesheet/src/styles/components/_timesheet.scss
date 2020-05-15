@@ -1,0 +1,27 @@
+/**
+  I could use ::ng-deep in component styles
+  to keep it simpler, but this feature is deprecated.
+ */
+$mat-card-padding: 16px;
+
+.timesheet-widget{
+  .mat-card-header-text{
+    display: none;
+  }
+
+  .mat-card-footer{
+    padding: $mat-card-padding;
+  }
+
+  //#region This is needed to display custom scrollbar outside content
+  .mat-card-content{
+    margin-left: -#{$mat-card-padding};
+    margin-right: -#{$mat-card-padding};
+    margin-bottom: 0;
+  }
+  .timesheet-details{
+    margin-left: $mat-card-padding;
+    margin-right: $mat-card-padding;
+  }
+  //#endregion
+}
